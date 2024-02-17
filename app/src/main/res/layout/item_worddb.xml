@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="wordDB"
+            type="edu.ktu.lithuanianlearningapp.models.WordDB" />
+        <variable
+            name="clickListener"
+            type="edu.ktu.lithuanianlearningapp.adapters.WordsAdapter.WordDBClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onClick(wordDB)}">
+
+        <TextView
+            android:id="@+id/wordDB_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{wordDB.word_in_Lithuanian}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Sparky" />
+
+        <TextView
+
+            android:id="@+id/wordDB_translation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{wordDB.translation}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wordDB_name"
+            app:layout_constraintVertical_bias="1.0"
+            tools:text="5 year old German Shpeherd" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

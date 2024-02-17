@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "723398493411",
+    "project_id": "lithuanian-learning-app",
+    "storage_bucket": "lithuanian-learning-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723398493411:android:6ee49119a89ccd337af1d6",
+        "android_client_info": {
+          "package_name": "edu.ktu.lithuanianlearningapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723398493411-llrd1fpdttgueco8k9n05rb9a57f3c9s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCs5trX5OuIxmqxoPSAdvhEIQDQst75DLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "723398493411-llrd1fpdttgueco8k9n05rb9a57f3c9s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -55,13 +55,13 @@ class MainScreenFragment : Fragment() {
 
         if(prog > 0 && sk < 12){
             var sk2 = sk;
-            tv.text = "Done: $sk2/12";
+            tv.text = "Done: $sk2/10";
             sk = sk2;
             viewModel.saveProgress(sk)
         }
 
         viewModel.getProgress.observe(viewLifecycleOwner) {
-            if (it <= 12) {
+            if (it <= 10) {
                 tv.text = "Done: $it/10";
             }
         }

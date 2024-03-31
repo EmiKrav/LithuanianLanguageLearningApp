@@ -1,5 +1,6 @@
 package edu.ktu.lithuanianlearningapp
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
@@ -21,6 +22,7 @@ class SettingsFragment : Fragment() {
     private val currentUser = FirebaseAuth.getInstance().currentUser
     private var wordListenerRegistration: ListenerRegistration? = null
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,11 +38,18 @@ class SettingsFragment : Fragment() {
         val b7 =  binding.button7;
         val b8 =  binding.button8;
 
-        val args2 = SettingsFragmentArgs.fromBundle(requireArguments());
+        viewModel.getArg1.observe(viewLifecycleOwner) {
 
-        chk.isChecked = args2.C1;
-        chk2.isChecked = args2.C2;
-        chk3.isChecked = args2.C3;
+            chk.isChecked = it;
+        }
+        viewModel.getArg2.observe(viewLifecycleOwner) {
+
+            chk2.isChecked = it;
+        }
+            viewModel.getArg3.observe(viewLifecycleOwner) {
+
+                chk3.isChecked = it;
+            }
 
        // mainVm.saveNameUser("Prateek")
 //        viewModel.getUserName.observe(viewLifecycleOwner){
@@ -53,14 +62,14 @@ class SettingsFragment : Fragment() {
 
                     viewModel.saveArg1(true)
                     val action =
-                        SettingsFragmentDirections.actionSettingsFragmentToMainScreenFragment(0,Button1, args2.C3, args2.C2)
+                        SettingsFragmentDirections.actionSettingsFragmentToMainScreenFragment()
                     findNavController().navigate(action)
                 }
                 else{
                       var Button1 = false;
                         viewModel.saveArg1(false)
                         val action = SettingsFragmentDirections
-                            .actionSettingsFragmentToMainScreenFragment(0,Button1, args2.C3, args2.C2)
+                            .actionSettingsFragmentToMainScreenFragment()
                             findNavController().navigate(action)
                 }
 
@@ -71,7 +80,7 @@ class SettingsFragment : Fragment() {
 
                 viewModel.saveArg3(true)
                 val action2 = SettingsFragmentDirections
-                    .actionSettingsFragmentToMainScreenFragment(0,args2.C1, Button3, args2.C2)
+                    .actionSettingsFragmentToMainScreenFragment()
                 findNavController().navigate(action2)
             }
             else {
@@ -79,7 +88,7 @@ class SettingsFragment : Fragment() {
 
                 viewModel.saveArg3(false)
                 val action2 = SettingsFragmentDirections
-                    .actionSettingsFragmentToMainScreenFragment(0,args2.C1,Button3, args2.C2)
+                    .actionSettingsFragmentToMainScreenFragment()
                 findNavController().navigate(action2)
             }
 
@@ -89,14 +98,14 @@ class SettingsFragment : Fragment() {
                var Button2 = true;
                 viewModel.saveArg2(true)
                 val action = SettingsFragmentDirections
-                    .actionSettingsFragmentToMainScreenFragment(0,args2.C1, args2.C3, Button2)
+                    .actionSettingsFragmentToMainScreenFragment()
                 findNavController().navigate(action)
             }
             else{
               var  Button2 = false;
                 viewModel.saveArg2(false)
                 val action = SettingsFragmentDirections
-                    .actionSettingsFragmentToMainScreenFragment(0,args2.C1, args2.C3, Button2)
+                    .actionSettingsFragmentToMainScreenFragment()
                 findNavController().navigate(action)
             }
 
@@ -114,7 +123,7 @@ class SettingsFragment : Fragment() {
             viewModel.saveArg3(false)
             viewModel.saveProgress(0)
             val action = SettingsFragmentDirections
-                .actionSettingsFragmentToMainScreenFragment(0,false,false, false)
+                .actionSettingsFragmentToMainScreenFragment(false,false, false)
             findNavController().navigate(action)
         }
         b8.setOnClickListener {
@@ -125,7 +134,7 @@ class SettingsFragment : Fragment() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Log.d(TAG, "User account deleted.")
-                        Toast.makeText( context,"Successfully Deleted User", Toast.LENGTH_LONG).show();
+                        Toast.makeText( context,"Пользователь успешно удален", Toast.LENGTH_LONG).show();
                         val action = SettingsFragmentDirections
                             .actionSettingsFragmentToSignInFragment()
                         findNavController().navigate(action)

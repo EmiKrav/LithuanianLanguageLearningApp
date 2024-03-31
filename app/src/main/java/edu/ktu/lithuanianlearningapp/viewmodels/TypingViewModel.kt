@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils.indexOfDifference
 
 
 class TypingViewModel(
-        val challange: String = "word",
+        val challange: String = "слово",
         val translation: String = "zodis",
         val maxAttempts: Int = challange.length,
         application: Application
@@ -92,7 +92,7 @@ class TypingViewModel(
         }
     }
     class TypingViewModelFactory(
-        val challange: String = "word",
+        val challange: String = "слово",
         val translation: String = "zodis",
         val maxAttempts: Int = challange.length,
         val application: Application

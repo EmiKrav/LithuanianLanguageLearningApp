@@ -25,7 +25,7 @@ class SignInFragment : Fragment() {
 
         viewModel2.currentUser.observe(viewLifecycleOwner) {
             it?.let {
-                findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToMainScreenFragment(0))
+                findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToMainScreenFragment())
             }
         }
 

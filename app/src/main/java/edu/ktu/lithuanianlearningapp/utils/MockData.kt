@@ -7,13 +7,13 @@ import kotlin.random.Random
 object MockData {
     val wordDB = listOf(
         WordDB(
-            0,"Vienas", "One", "numbers"
+            0,"Vienas", "Один", "цифры"
         ),
         WordDB(
-            0,"Du", "Two", "numbers"
+            0,"Du", "Два", "цифры"
         ),
         WordDB(
-            0,"Trys", "Three", "numbers"
+            0,"Trys", "Три", "цифры"
         )
     )
 

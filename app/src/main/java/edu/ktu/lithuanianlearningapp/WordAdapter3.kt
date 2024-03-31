@@ -32,7 +32,7 @@ class WordAdapter3 (val type: Int, val title: String, val words: List<Word>):
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = words[position]
-        if (title != "All") {
+        if (title != "Все") {
             if(type == 1){
                 if (data.word_field.equals(title)) {
                     holder.wordinLithuanianText.text = data.word_in_Lithuanian

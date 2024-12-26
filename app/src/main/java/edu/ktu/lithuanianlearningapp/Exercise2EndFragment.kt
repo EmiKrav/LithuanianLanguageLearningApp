@@ -31,7 +31,7 @@ class Exercise2EndFragment : Fragment() {
             findNavController().navigate(action)
         }
         binding.button3.setOnClickListener{
-            val action = Exercise2EndFragmentDirections.actionExercise2EndFragmentToMainScreenFragment()
+            val action = Exercise2EndFragmentDirections.actionExercise2EndFragmentToMainScreenFragment(0)
             findNavController().navigate(action)
 
         }

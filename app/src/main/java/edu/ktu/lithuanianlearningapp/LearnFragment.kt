@@ -49,18 +49,19 @@ class LearnFragment : Fragment() {
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
 
         var wordList: MutableList<Word> = mutableListOf(
-            Word("Vienas", "Один", "Числа"),
-            Word("Du", "Два", "Числа"),
-            Word("Trys", "Три", "Числа"),
-            Word("Ne", "Нет", "Основноe"),
-            Word("Taip", "Да", "Основноe"),
-            Word("Gal", "Может быть", "Беседа"),
-            Word("Ačiū", "Спасибо", "Основноe"),
-            Word("Keturi", "Четыре", "Числа"),
-            Word("Padėkite man", "Помогите мне", "Основноe"),
-            Word("Pagalba", "Помощь", "Основноe"),
-            Word("Vardas", "Имя", "О вас"),
-            Word("Pavardė", "Фамилия", "О вас"),
+            Word("Vienas", "One", "Numbers"),
+            Word("Du", "Two", "Numbers"),
+            Word("Trys", "Three", "Numbers"),
+            Word("Ne", "No", "Main"),
+            Word("Taip", "Yes", "Main"),
+            Word("Gal", "Maybe", "Conversation"),
+            Word("Ačiū", "Thank you", "Main"),
+            Word("Prašom", "Welcome", "Main"),
+            Word("Keturi", "Four", "Numbers"),
+            Word("Padėkite man", "Help me", "Main"),
+            Word("Pagalba", "Help (n)", "Main"),
+            Word("Vardas", "Name", "About you"),
+            Word("Pavardė", "Surname", "About you"),
         ) as MutableList<Word>
         val source = Source.CACHE
 
@@ -87,7 +88,7 @@ class LearnFragment : Fragment() {
             .addOnFailureListener { exception ->
                 Log.w(ContentValues.TAG, "Error getting documents: ", exception)
             }
-        //Log.d(TAG, "${wordList[wordList.lastIndex].translation} => ${wordList[wordList.lastIndex].word_in_Lithuanian}")
+        Log.d(TAG, "${wordList[wordList.lastIndex].translation} => ${wordList[wordList.lastIndex].word_in_Lithuanian}")
 
         val currentUser = FirebaseAuth.getInstance().currentUser
 
@@ -161,15 +162,14 @@ class LearnFragment : Fragment() {
 
 
 
-            subjects.add("Все")
-            subjects.add("Основноe")
-            subjects.add("О вас")
-            subjects.add("Числа")
-            subjects.add("Беседа")
+            subjects.add("All")
+            subjects.add("Main")
+            subjects.add("About you")
+
 
             var index = 1
 
-            var title = "Все";
+            var title = "All";
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>,
@@ -192,14 +192,14 @@ class LearnFragment : Fragment() {
             view?.findViewById<Button>(R.id.button11)
                 ?.setOnClickListener {
 
-                    if (button.text == "показать") {
-                        button.text = "Скрывать"
+                    if (button.text == "Unhide") {
+                        button.text = "Hide"
                         index = 1;
                         recycler.adapter = WordAdapter3(index, title, wordList)
                         return@setOnClickListener
                     }
-                    if (button.text == "Скрывать") {
-                        button.text = "показать"
+                    if (button.text == "Hide") {
+                        button.text = "Unhide"
 
                         index = 0;
                         recycler.adapter = WordAdapter3(index, title, wordList)

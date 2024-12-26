@@ -11,7 +11,13 @@
         android:label="ExerciseFragment" >
         <action
             android:id="@+id/action_exerciseFragment_to_mainScreenFragment"
-            app:destination="@id/mainScreenFragment" />
+            app:destination="@id/mainScreenFragment"
+            app:popUpTo="@id/mainScreenFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="progress"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/mainScreenFragment"
@@ -37,12 +43,18 @@
             app:destination="@id/exercise2Fragment"
             app:popUpTo="@id/exercise2Fragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="Button1"
+            app:argType="boolean"
+            android:defaultValue="false" />
         <action
             android:id="@+id/action_mainScreenFragment_to_settingsFragment2"
             app:destination="@id/settingsFragment" />
         <action
             android:id="@+id/action_mainScreenFragment_to_settingsFragment3"
-            app:destination="@id/settingsFragment">
+            app:destination="@id/settingsFragment"
+            app:popUpTo="@id/settingsFragment"
+            app:popUpToInclusive="true">
             <argument
                 android:name="C1"
                 android:defaultValue="false" />
@@ -53,9 +65,20 @@
                 android:name="C3"
                 android:defaultValue="false" />
         </action>
+        <argument
+            android:name="Button2"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="Button3"
+            app:argType="boolean"
+            android:defaultValue="false" />
         <action
             android:id="@+id/action_mainScreenFragment_to_addWordFragment"
             app:destination="@id/addWordFragment" />
+        <argument
+            android:name="progress"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -99,7 +122,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_mainScreenFragment"
             app:destination="@id/mainScreenFragment"
-            app:popUpTo="@id/mainScreenFragment">
+            app:launchSingleTop="false"
+            app:popUpTo="@id/mainScreenFragment"
+            app:popUpToInclusive="true">
             <argument
                 android:name="Button1"
                 android:defaultValue="false" />
@@ -110,6 +135,18 @@
                 android:name="Button2"
                 android:defaultValue="false" />
         </action>
+        <argument
+            android:name="C1"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="C2"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="C3"
+            app:argType="boolean"
+            android:defaultValue="false" />
         <action
             android:id="@+id/action_settingsFragment_to_signInFragment"
             app:destination="@id/signInFragment" />

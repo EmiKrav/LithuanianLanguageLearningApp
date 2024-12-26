@@ -2,7 +2,6 @@ package edu.ktu.lithuanianlearningapp
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -25,14 +24,17 @@ class MainScreenFragment : Fragment() {
         val viewModel: SettingsViewModel by viewModels()
         // binding.lifecycleOwner = viewLifecycleOwner
 
+        val args = MainScreenFragmentArgs.fromBundle(requireArguments())
         ///////////////////////////////////////////////////////////////////
         val b1 = binding.button4;
         val b2 = binding.imageButton3;
         val b3 = binding.button;
         var tv = binding.textView5;
-        var Button1 : Boolean = false;
-        var Button2: Boolean = false;
-        var Button3: Boolean = false;
+        var Button1 = args.Button1;
+        var Button2 = args.Button2;
+        var Button3 = args.Button3;
+        val prog = args.progress;
+        var sk = args.progress;
 
         val callback = requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
 
@@ -51,13 +53,17 @@ class MainScreenFragment : Fragment() {
             b3.isVisible =  !Button3
         }
 
-
-
+        if(prog > 0 && sk < 12){
+            var sk2 = sk;
+            tv.text = "Done: $sk2/10";
+            sk = sk2;
+            viewModel.saveProgress(sk)
+        }
 
         viewModel.getProgress.observe(viewLifecycleOwner) {
-
-                tv.text = "Сделанныйx: $it/10";
-
+            if (it <= 10) {
+                tv.text = "Done: $it/10";
+            }
         }
 
                 if(Button1){
@@ -68,7 +74,7 @@ class MainScreenFragment : Fragment() {
             b1.setOnClickListener {
 
                 val action = MainScreenFragmentDirections
-                    .actionMainScreenFragmentToExerciseFragment()
+                    .actionMainScreenFragmentToExerciseFragment(sk)
                 findNavController()
                     .navigate(action)
                 }
@@ -107,8 +113,10 @@ class MainScreenFragment : Fragment() {
             }
         binding.imageButton2
             .setOnClickListener {
-                findNavController()
-                    .navigate(R.id.action_mainScreenFragment_to_settingsFragment)
+               val action = MainScreenFragmentDirections
+                   .actionMainScreenFragmentToSettingsFragment(Button1, Button2, Button3)
+               findNavController()
+                    .navigate(action)
             }
         return binding.root
     }

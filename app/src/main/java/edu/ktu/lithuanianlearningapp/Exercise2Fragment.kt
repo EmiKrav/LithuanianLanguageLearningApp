@@ -45,18 +45,19 @@ class Exercise2Fragment : Fragment() {
     ): View? {
 
         var wordList: MutableList<Word> = mutableListOf(
-            Word("Vienas", "Один", "Числа"),
-            Word("Du", "Два", "Числа"),
-            Word("Trys", "Три", "Числа"),
-            Word("Ne", "Нет", "Основноe"),
-            Word("Taip", "Да", "Основноe"),
-            Word("Gal", "Может быть", "Беседа"),
-            Word("Ačiū", "Спасибо", "Основноe"),
-            Word("Keturi", "Четыре", "Числа"),
-            Word("Padėkite man", "Помогите мне", "Основноe"),
-            Word("Pagalba", "Помощь", "Основноe"),
-            Word("Vardas", "Имя", "О вас"),
-            Word("Pavardė", "Фамилия", "О вас"),
+            Word("Vienas", "One", "Numbers"),
+            Word("Du", "Two", "Numbers"),
+            Word("Trys", "Three", "Numbers"),
+            Word("Ne", "No", "Main"),
+            Word("Taip", "Yes", "Main"),
+            Word("Gal", "Maybe", "Conversation"),
+            Word("Ačiū", "Thank you", "Main"),
+            Word("Prašom", "Welcome", "Main"),
+            Word("Keturi", "Four", "Numbers"),
+            Word("Padėkite man", "Help me", "Main"),
+            Word("Pagalba", "Help (n)", "Main"),
+            Word("Vardas", "Name", "About you"),
+            Word("Pavardė", "Surname", "About you"),
         ) as MutableList<Word>
         val source = Source.CACHE
 
@@ -85,32 +86,32 @@ class Exercise2Fragment : Fragment() {
         Log.d(TAG, "${wordList[wordList.lastIndex].translation} => ${wordList[wordList.lastIndex].word_in_Lithuanian}")
         wordList.shuffled() as MutableList<WordW>
         var words: MutableList<WordW> = mutableListOf(
-            WordW("Gerai", "хорошо"),
+            WordW("Gerai", "good"),
 
-            WordW("Kitas", "следующий"),
+            WordW("Kitas", "next"),
         WordW(
-            "Toliau","продолжать"
+            "Toliau","continue"
         ),
         WordW(
-            "Pradžia", "начало"
+            "Pradžia", "begining"
         ),
         WordW(
-            "Pabaiga","конец"
+            "Pabaiga","ending"
         ),
         WordW(
-            "Vienas", "один"
+            "Vienas", "one"
         ),
         WordW(
-            "Du", "два"
+            "Du", "two"
         ),
         WordW(
-            "Trys", "три"
+            "Trys", "three"
         ),
         WordW(
-            "Keturi","четыре"
+            "Keturi","four"
         ),
         WordW(
-            "Penki","пять"
+            "Penki","five"
         )
 ,       WordW(wordList[0].word_in_Lithuanian, wordList[0].translation)
         ).shuffled() as MutableList<WordW>
@@ -141,7 +142,7 @@ class Exercise2Fragment : Fragment() {
         }
         val callback = requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             val action =
-                Exercise2FragmentDirections.actionExercise2FragmentToMainScreenFragment()
+                Exercise2FragmentDirections.actionExercise2FragmentToMainScreenFragment(Button4, Button1, Button2, Button3)
             findNavController().navigate(action)
         }
 

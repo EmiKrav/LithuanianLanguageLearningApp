@@ -34,24 +34,31 @@ class ExerciseFragment : Fragment() {
     val db = Firebase.firestore
 
     fun randomFromList(): String {
-        val list = listOf("Первый", "более", "последний", "принести", "установить", "окно", "три", "акры", "также",
-            "чувствовать", "развитие", "наибольший", "кирпич", "дольше", "третий", "строительство", "должен",
-            "предупредить", "ходить", "наименьший", "наблюдать", "политический", "обещал", "пропал", "снег", "вверх",
-            "берег", "войти", "сумма", "почти", "тема", "полностью", "перед", "установить", "встретил",
-            "ожидать", "под", "способность", "ноль", "размер", "голый", "камера", "вряд ли", "невозможно",
-            "обширный", "мысль", "лук", "погребенный", "углерод", "настоящий", "звезда", "волнение", "сезон",
-            "связанный", "вид", "самый большой", "стоять", "башня", "химический", "таким образом", "важный",
-            "важность", "положительный", "части", "над", "летать", "решать", "осторожный", "закон", "безопасность",
-            "радость", "организация", "муха", "жидкость", "полетела", "части", "деревня", "банк", "кукла",
-            "возможно", "буйвол", "шея", "тропический", "куча", "ковбой", "движение", "богатство", "полет",
-            "оригинал", "пила", "труба", "победа", "в основном", "пила", "сезон", "выходной", "недавно",
-            "струна", "кирка", "типичный", "слабый", "недавно", "мельница", "двойной", "увеличение", "передний",
-            "горка", "температура", "происхождение", "кровь", "надежда", "одинаково", "потратил", "доска", "частный",
-            "с", "стороны", "зеленый", "вдоль", "побег", "инженер", "немного", "улыбка", "краска", "пламя",
-            "раньше", "рассказать", "если", "считать", "использовать", "становится", "вещь", "дыхание", "новости", "машина",
-            "кожа", "от", "активный", "следовать", "цент", "мышь", "важность", "семь", "управляемый", "использовать",
-            "держать", "установить", "стул", "рот", "плечо", "далеко", "сочетать", "один", "нация", "если",
-            "голый", "ссылаться", "движение", "дальше", "производить", "путешествовать", "дикий", "живой")
+        val list = listOf("First", "Over", "Last", "Bring", "Set", "window","three","acres","also",
+            "feel","development","greatest","brick","longer","third","construction","must",
+            "warn","walk","least","observe","political","promised","missing","snow","up",
+            "shore","enter","sum","almost","topic","entirely","before","establish","met",
+            "expect","beneath","ability","zero","size","bare","camera","hardly","impossible",
+            "vast","thought","bow","buried","carbon","present","star","excitement","season",
+            "bound","species","biggest","stand","tower","chemical","thus","important",
+            "importance","positive","parts","over","fly","solve","careful","law","safety",
+            "joy","organization","fly","liquid","flew","parts","village","bank","doll",
+            "possibly","buffalo","neck","tropical","pile","cowboy","motion","wealth","flight",
+            "original","saw","tube","victory","mainly","saw","season","off","recently",
+            "string","pick","typical","weak","recently","mill","double","increase","front",
+            "slide","temperature","origin","blood","hope","equally","spent","board","private",
+            "with","sides","green","along","escape","engineer","little","smile","paint","flame",
+            "earlier","tell","if","count","using","becoming","thing","breath","news","car",
+            "leather","from","active","follow","cent","mouse","importance","seven","managed","use",
+            "kept","establish","chair","mouth","shoulder","far","combine","alone","nation","if",
+            "bare","refer","motion","farther","produce","travel","wild","living","secret",
+            "practice","slope","use","refer","directly","gentle","taught","fire","drew","sleep",
+            "wire","ago","stairs","worried","occasionally","feature","know","stove","attempt",
+            "go","dog","principal","soon","settle","alive","degree","people","halfway","fall",
+            "idea","heat","collect","browser","torn","plant","base","represent","drew",
+            "daily","dinner","go","anywhere","shells","pair","loss","empty","perhaps","topic",
+            "group","happily","magic","result","practical","boat","structure","plural","cry",
+            "poor","after","failed","read","airplane","struggle","indicate","itself","cow")
         val randomIndex = Random.nextInt(list.size);
         return list[randomIndex]
     }
@@ -59,32 +66,35 @@ class ExerciseFragment : Fragment() {
 
     //list.removeIf { i -> randomElements.contains(i) }
     var wordsE = mutableListOf(
-        WordW("Gerai", "хорошо"),
-
-        WordW("Kitas", "следующий"),
         WordW(
-            "Toliau","продолжать"
+            "Gerai", "good"
         ),
         WordW(
-            "Pradžia", "начало"
+            "Kitas", "next"
         ),
         WordW(
-            "Pabaiga","конец"
+            "Toliau","continue"
         ),
         WordW(
-            "Vienas", "один"
+            "Pradžia", "begining"
         ),
         WordW(
-            "Du", "два"
+            "Pabaiga","ending"
         ),
         WordW(
-            "Trys", "три"
+            "Vienas", "one"
         ),
         WordW(
-            "Keturi","четыре"
+            "Du", "two"
         ),
         WordW(
-            "Penki","пять"
+            "Trys", "three"
+        ),
+        WordW(
+            "Keturi","four"
+        ),
+        WordW(
+            "Penki","five"
         )
     )
     var shuffledWords = wordsE.shuffled() as MutableList<WordW>
@@ -202,26 +212,21 @@ class ExerciseFragment : Fragment() {
         binding.checkBox9.text = randomElements2[0]
         randomElements2 = randomElements2.drop(1)
         if (wordindex == shuffledWords.lastIndex) {
-            binding.button10.text = "Назад"
+            binding.button10.text = "Back"
         }
     }
     // Show next word
 
     fun nextWord(){
-        var progresas : Int = 0
         wordindex++
-        if (wordindex == shuffledWords.lastIndex + 1) {
+        if (wordindex == shuffledWords.lastIndex+1) {
 
+            val args = ExerciseFragmentArgs.fromBundle(requireArguments())
 
             val viewModel: SettingsViewModel by viewModels()
-
-            viewModel.getProgress.observe(viewLifecycleOwner) {
-                progresas = it
-            }
-
-            viewModel.saveProgress(progresas +1)
+            viewModel.saveProgress(args.progress+1)
             val action =
-                ExerciseFragmentDirections.actionExerciseFragmentToMainScreenFragment()
+                ExerciseFragmentDirections.actionExerciseFragmentToMainScreenFragment(args.progress+1)
             findNavController().navigate(action)
         }
         else {

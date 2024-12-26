@@ -7,9 +7,9 @@ import com.google.android.material.textfield.TextInputLayout
 fun TextInputLayout.setAuthEmailError(authError: AuthError)
 {
     error = when(authError){
-        AuthError.NoEmailProvided -> "Электронная почта не указанаd"
-        AuthError.MalformedEmail -> "Электронная почта недействительна"
-        AuthError.UserExists -> "Пользователь с таким адресом электронной почты уже существует"
+        AuthError.NoEmailProvided -> "No email provided"
+        AuthError.MalformedEmail -> "Email is invalid"
+        AuthError.UserExists -> "User with such email already exists"
         else -> null
     }
 }
@@ -18,10 +18,9 @@ fun TextInputLayout.setAuthEmailError(authError: AuthError)
 fun TextInputLayout.setAuthPasswordError(authError: AuthError)
 {
     error = when(authError){
-        AuthError.NoPasswordProvided-> "Пароль не указан"
-        AuthError.WrongCredentials-> "Email или пароль указан неверно"
-        AuthError.WeakPassword-> "Пароль должен иметь длину не менее 8 символов, содержать одну строчную," +
-                " одну заглавную букву и специальный символ (!@#\$%^&*()\\-_+.) или цифру"
+        AuthError.NoPasswordProvided-> "No password provided"
+        AuthError.WrongCredentials-> "Email or password is incorrect"
+        AuthError.WeakPassword-> "Password has to be atleast 8 characters long, have one lower case, one upper case letter and a special symbol (!@#$%^&*()\\-_+.) or digit"
         else->null
     }
 }
